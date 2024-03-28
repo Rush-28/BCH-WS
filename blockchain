@@ -1,0 +1,64 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+contract Crowdfunding{
+    address public owner;
+    mapping(address => uint) public contributions;
+    uint public totalContributions;
+    constructor() {
+        owner=msg.sender;
+    }
+    function contribute() public payable{
+        require(msg.value > 0 ,"Contribution amount must be greater than 0");
+        contributions[msg.sender]+= msg.value;
+        totalContributions += msg.value;
+    }
+    function withdraw() public {
+        require(msg.sender ==owner,"only owner can withdraw funds");
+        payable (msg.sender).transfer(address(this).balance);
+    }
+}
+
+
+
+/* pragma solidity ^0.8.20;
+
+contract simpleStorage {
+    string public favFruit;
+
+    function nameStore(string memory    _nameStore) public {
+        favFruit =  _nameStore;
+    }
+    uint[] public numbers;
+
+ } 
+ */
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract sample2 {
+    uint public favNum;
+    uint[] public listofFavNum;
+    struct person{
+        uint favNum;
+        string name;
+    }
+    person[] public listofPeople;
+    person public pat = person(1,"Rushika");
+    function addperson( string memory _name,uint _favNum) public {
+        listofPeople.push(person (_favNum,_name));
+    }
+}
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20; //version specified.
+
+contract sample{
+    uint favoritenumber = 98; //unsigned integer
+    int temperature = -8; //integers
+    string favoritenumberinText = "ninetyEight"; //string
+    address myAddress = 0x3C109BB94B749F46363151fa9530550FB9BA67eA; //account address
+    bytes32 favoriteBytes ="cat";//bytes
+
+}
+
